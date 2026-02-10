@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 96%;
+    --foreground: 220 30% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 8%;
+    --primary: 220 30% 8%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 9% 46%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 224 76% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 224 76% 48%;
+    --radius: 0.625rem;
+    
+    --color-bg-primary: #F6F7F9;
+    --color-bg-secondary: #111827;
+    --color-accent: #1D4ED8;
+    --color-text-primary: #0B1220;
+    --color-text-secondary: #5A6578;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-[#5A6578];
+  }
+  
+  .pill-image {
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  
+  .card-rounded {
+    border-radius: 28px;
+  }
+  
+  .hairline {
+    border: 1px solid rgba(11, 18, 32, 0.14);
+  }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-[#1D4ED8] text-white font-medium rounded-full transition-all duration-200;
+  }
+  
+  .btn-primary:hover {
+    @apply -translate-y-0.5 shadow-lg;
+    box-shadow: 0 10px 30px rgba(29, 78, 216, 0.3);
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-[#0B1220] font-medium rounded-full border border-[rgba(11,18,32,0.14)] transition-all duration-200;
+  }
+  
+  .btn-secondary:hover {
+    @apply -translate-y-0.5 shadow-md;
+  }
+  
+  .section-light {
+    background-color: var(--color-bg-primary);
+  }
+  
+  .section-dark {
+    background-color: var(--color-bg-secondary);
+    color: white;
+  }
+  
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3 {
+    color: white;
+  }
+  
+  .section-dark .eyebrow {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .stat-card {
+    @apply bg-white rounded-[28px] p-6 border border-[rgba(11,18,32,0.08)] shadow-[0_18px_50px_rgba(0,0,0,0.08)];
+  }
+  
+  .feature-chip {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white font-medium border border-white/20;
+  }
+  
+  .nav-link {
+    @apply text-sm font-medium text-[#5A6578] hover:text-[#0B1220] transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F7F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5A6578;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0B1220;
+}
+
+/* Admin panel styles */
+.admin-sidebar {
+  @apply fixed left-0 top-0 h-full w-64 bg-[#111827] text-white z-50;
+}
+
+.admin-content {
+  @apply ml-64 min-h-screen bg-[#F6F7F9];
+}
+
+.admin-card {
+  @apply bg-white rounded-xl p-6 shadow-sm border border-[rgba(11,18,32,0.08)];
+}
